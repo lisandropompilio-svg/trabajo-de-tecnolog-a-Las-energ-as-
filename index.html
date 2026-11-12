@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Energía y sus Manifestaciones | Guía Interactiva</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                        slate: {
+                            850: '#172033',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animaciones suaves y personalizadas para SVGs e interacciones */
+        @keyframes pulseFlow {
+            0%, 100% { stroke-dashoffset: 24; }
+            50% { stroke-dashoffset: 0; }
+        }
+        .animate-dash {
+            stroke-dasharray: 6 6;
+            animation: pulseFlow 2s linear infinite;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: floatSlow 3.5s ease-in-out infinite;
+        }
+        /* Ocultar barra de desplazamiento en pestañas horizontales móviles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-amber-50/40 text-slate-800 antialiased selection:bg-amber-300 selection:text-slate-900">
+
+    <!-- Barra de Navegación Superior -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-amber-200/80 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / Marca -->
+                <a href="#inicio" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
+                        <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-extrabold text-lg text-slate-900 tracking-tight block leading-none">Energía<span class="text-amber-600">Lab</span></span>
+                        <span class="text-[11px] font-medium text-slate-500 uppercase tracking-wider">Física y Química</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces Desktop -->
+                <nav class="hidden md:flex items-center gap-1">
+                    <a href="#concepto" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition-colors">Fundamentos</a>
+                    <a href="#explorador" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition-colors">Los 6 Tipos</a>
+                    <a href="#simulador" class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition-colors">Simulador</a>
+                    <a href="#cuestionario" class="ml-2 px-4 py-2 rounded-xl text-sm font-bold bg-amber-500 hover:bg-amber-600 text-slate-900 shadow-sm transition-all flex items-center gap-1.5">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        <span>Desafío Quiz</span>
+                    </a>
+                </nav>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-amber-100 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-amber-200 px-4 pt-2 pb-4 space-y-1.5 shadow-lg">
+            <a href="#concepto" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-amber-50">Fundamentos y Conservación</a>
+            <a href="#explorador" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-amber-50">Explorador de los 6 Tipos</a>
+            <a href="#simulador" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-amber-50">Simulador de Transformaciones</a>
+            <a href="#cuestionario" class="mobile-link block px-4 py-2.5 rounded-xl text-sm font-bold bg-amber-400 text-slate-900 text-center mt-2">Ir al Cuestionario Interactivo</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-amber-100/70 via-amber-50/40 to-transparent pt-10 pb-14 sm:pt-16 sm:pb-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                <!-- Texto Principal -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-200/70 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-700"></i>
+                        <span>Recurso Interactivo · Educación Secundaria</span>
+                    </div>
+                    
+                    <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.25rem] text-slate-900 leading-[1.12] tracking-tight">
+                        La Energía y sus <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-500">Manifestaciones</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-slate-700 leading-relaxed max-w-2xl">
+                        Desde el rayo que ilumina una tormenta hasta los nutrientes que impulsan tus músculos: la <strong>energía</strong> es el motor invisible que permite todo cambio, movimiento o transformación en el universo.
+                    </p>
+
+                    <!-- Tarjeta Destacada: Ley de Conservación -->
+                    <div class="bg-white rounded-2xl p-5 border-l-4 border-amber-500 shadow-md shadow-amber-900/5">
+                        <div class="flex items-start gap-3.5">
+                            <div class="p-2.5 rounded-xl bg-amber-100 text-amber-700 shrink-0 mt-0.5">
+                                <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-display font-bold text-slate-900 text-base">Principio de Conservación de la Energía</h2>
+                                <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                                    <em>«La energía no se crea ni se destruye; únicamente se transforma de una forma a otra»</em>. En un sistema aislado, la cantidad total de energía permanece siempre constante.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="flex flex-wrap gap-3 pt-1">
+                        <a href="#explorador" class="px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-lg shadow-slate-900/15 transition-all flex items-center gap-2">
+                            <span>Explorar las 6 Energías</span>
+                            <i data-lucide="arrow-down-right" class="w-4 h-4 text-amber-400"></i>
+                        </a>
+                        <a href="#simulador" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-amber-50 text-slate-900 border border-amber-300 font-bold text-sm shadow-sm transition-all flex items-center gap-2">
+                            <i data-lucide="sliders" class="w-4 h-4 text-amber-600"></i>
+                            <span>Probar Simulador</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ilustración Conceptual Hero (SVG Responsivo sin superposición) -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-amber-200/80 shadow-xl shadow-amber-900/5">
+                        <svg viewBox="0 0 420 340" class="w-full h-auto" role="img" aria-label="Diagrama radial de las seis manifestaciones de la energía">
+                            <defs>
+                                <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.45"/>
+                                    <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+                                </radialGradient>
+                                <linearGradient id="sunCore" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#f59e0b"/>
+                                    <stop offset="100%" stop-color="#d97706"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Fondo suave -->
+                            <rect x="0" y="0" width="420" height="340" rx="20" fill="#fffbeb" opacity="0.6"/>
+                            <circle cx="210" cy="170" r="120" fill="url(#coreGlow)"/>
+                            <circle cx="210" cy="170" r="105" fill="none" stroke="#fcd34d" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+                            <!-- Líneas conectoras desde el centro (210,170) hacia los 6 nodos -->
+                            <line x1="210" y1="170" x2="210" y2="54" stroke="#f59e0b" stroke-width="2" class="animate-dash"/>
+                            <line x1="210" y1="170" x2="328" y2="108" stroke="#f59e0b" stroke-width="2" class="animate-dash"/>
+                            <line x1="210" y1="170" x2="328" y2="232" stroke="#f59e0b" stroke-width="2" class="animate-dash"/>
+                            <line x1="210" y1="170" x2="210" y2="286" stroke="#f59e0b" stroke-width="2" class="animate-dash"/>
+                            <line x1="210" y1="170" x2="92" y2="232" stroke="#f59e0b" stroke-width="2" class="animate-dash"/>
+                            <line x1="210" y1="170" x2="92" y2="108" stroke="#f59e0b" stroke-width="2" class="animate-dash"/>
+
+                            <!-- Nodo Central -->
+                            <circle cx="210" cy="170" r="44" fill="url(#sunCore)" stroke="#ffffff" stroke-width="4"/>
+                            <text x="210" y="166" text-anchor="middle" fill="#ffffff" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="13">ENERGÍA</text>
+                            <text x="210" y="182" text-anchor="middle" fill="#fef3c7" font-family="Inter, sans-serif" font-weight="600" font-size="10">Joule (J)</text>
+
+                            <!-- Nodo 1: Eléctrica (Arriba) -->
+                            <g transform="translate(210, 46)">
+                                <rect x="-54" y="-22" width="108" height="44" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="0" y="4" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="12">⚡ Eléctrica</text>
+                            </g>
+
+                            <!-- Nodo 2: Lumínica (Arriba Derecha) -->
+                            <g transform="translate(334, 106)">
+                                <rect x="-56" y="-22" width="112" height="44" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="0" y="4" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="12">☀️ Lumínica</text>
+                            </g>
+
+                            <!-- Nodo 3: Térmica (Abajo Derecha) -->
+                            <g transform="translate(334, 234)">
+                                <rect x="-56" y="-22" width="112" height="44" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="0" y="4" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="12">🔥 Térmica</text>
+                            </g>
+
+                            <!-- Nodo 4: Mecánica (Abajo) -->
+                            <g transform="translate(210, 294)">
+                                <rect x="-54" y="-22" width="108" height="44" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="0" y="4" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="12">⚙️ Mecánica</text>
+                            </g>
+
+                            <!-- Nodo 5: Química (Abajo Izquierda) -->
+                            <g transform="translate(86, 234)">
+                                <rect x="-56" y="-22" width="112" height="44" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="0" y="4" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="12">🧪 Química</text>
+                            </g>
+
+                            <!-- Nodo 6: Sonora (Arriba Izquierda) -->
+                            <g transform="translate(86, 106)">
+                                <rect x="-56" y="-22" width="112" height="44" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="0" y="4" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="12">🔊 Sonora</text>
+                            </g>
+                        </svg>
+                        <p class="text-center text-xs text-slate-500 mt-2 font-medium">
+                            Todas las manifestaciones se miden en <strong>Joules (J)</strong> en el Sistema Internacional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 1: Fundamentos Rápidos -->
+    <section id="concepto" class="py-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-3 gap-5">
+            <div class="bg-white rounded-2xl p-6 border border-amber-200/70 shadow-sm">
+                <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+                    <i data-lucide="gauge" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display font-bold text-slate-900 text-lg">¿Qué es exactamente?</h3>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    En física, la energía es la <strong>capacidad de un cuerpo o sistema para realizar un trabajo</strong>, producir movimiento, emitir luz o generar calor. No tiene masa ni ocupa espacio: es una propiedad de la materia y los campos.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-amber-200/70 shadow-sm">
+                <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+                    <i data-lucide="scale" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display font-bold text-slate-900 text-lg">Unidades de Medida</h3>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    Su unidad oficial es el <strong>Joule (J)</strong>. En la vida diaria también usamos la <strong>caloría (cal)</strong> para alimentos y calor ($1\text{ cal} \approx 4,18\text{ J}$) y el <strong>kilovatio-hora (kWh)</strong> en las facturas de electricidad.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-amber-200/70 shadow-sm">
+                <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+                    <i data-lucide="flame" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display font-bold text-slate-900 text-lg">Degradación de la Energía</h3>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                    Aunque la energía nunca desaparece, en cada transformación una parte se dispersa hacia el ambiente como <strong>energía térmica (calor)</strong> por rozamiento o resistencia, volviéndose menos aprovechable.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 2: Explorador Interactivo de los 6 Tipos de Energía -->
+    <section id="explorador" class="py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Enciclopedia Interactiva</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">Explora los 6 Tipos de Energía</h2>
+            <p class="text-slate-600 text-sm sm:text-base mt-2">
+                Selecciona cada manifestación para analizar su funcionamiento físico, su esquema ilustrado, ejemplos cotidianos y datos clave.
+            </p>
+        </div>
+
+        <!-- Barra de Pestañas (Tabs) -->
+        <div id="energy-tabs" role="tablist" aria-label="Tipos de energía" class="flex overflow-x-auto no-scrollbar gap-2.5 pb-3 mb-6 justify-start md:justify-center">
+            <!-- Se genera dinámicamente desde JS -->
+        </div>
+
+        <!-- Panel de Contenido Detallado de la Energía Seleccionada -->
+        <div id="energy-detail-card" class="bg-white rounded-3xl border border-amber-200 shadow-xl shadow-amber-900/5 overflow-hidden transition-all">
+            <!-- Contenido inyectado dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Sección 3: Simulador Interactivo de Transformaciones de Energía -->
+    <section id="simulador" class="py-12 sm:py-16 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-500/10 border border-amber-400/30 px-3 py-1 rounded-full">Laboratorio Virtual</span>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-white mt-3">Simulador de Transformaciones</h2>
+                    <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
+                        Elige un fenómeno cotidiano o tecnológico y avanza paso a paso para observar cómo la energía cambia de forma sin perderse.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Selector de Escenarios -->
+            <div id="sim-scenarios" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-8">
+                <!-- Botones generados por JS -->
+            </div>
+
+            <!-- Área Principal del Simulador -->
+            <div class="bg-slate-850 rounded-3xl border border-slate-700/80 p-5 sm:p-8 shadow-2xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-700/80">
+                    <div>
+                        <h3 id="sim-title" class="font-display font-bold text-xl sm:text-2xl text-amber-400">Encender una linterna a pilas</h3>
+                        <p id="sim-subtitle" class="text-sm text-slate-300 mt-1">Cadena de conversión electroquímica a radiación visible y calor.</p>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button id="sim-prev-btn" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:pointer-events-none text-sm font-semibold border border-slate-600 transition-colors flex items-center gap-1">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            <span>Anterior</span>
+                        </button>
+                        <button id="sim-next-btn" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm transition-colors flex items-center gap-1 shadow-md shadow-amber-500/20">
+                            <span>Siguiente Paso</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Diagrama SVG Animado del Flujo de Transformación -->
+                <div class="my-6 bg-slate-900/90 rounded-2xl p-4 border border-slate-700/70">
+                    <svg id="sim-svg" viewBox="0 0 820 230" class="w-full h-auto" role="img" aria-label="Diagrama animado de transformación de energía">
+                        <!-- Renderizado dinámico por JS -->
+                    </svg>
+                </div>
+
+                <!-- Explicación del Paso Actual y Balance de Conservación -->
+                <div class="grid md:grid-cols-12 gap-5 items-stretch">
+                    <div class="md:col-span-8 bg-slate-800/80 rounded-2xl p-5 border border-slate-700">
+                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+                            <span id="sim-step-badge" class="px-2.5 py-0.5 rounded-md bg-amber-500/20">Etapa 1 de 3</span>
+                            <span id="sim-step-heading">Almacenamiento Inicial</span>
+                        </div>
+                        <p id="sim-step-desc" class="text-slate-200 text-sm sm:text-base leading-relaxed">
+                            Descripción detallada del paso...
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-4 bg-amber-500/10 rounded-2xl p-5 border border-amber-400/30 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-amber-300 font-bold text-sm">
+                                <i data-lucide="thermometer" class="w-4 h-4"></i>
+                                <span>Disipación Térmica</span>
+                            </div>
+                            <p id="sim-heat-note" class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                Parte de la energía siempre se libera al entorno como calor.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-amber-400/20 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Energía Total:</span>
+                            <span class="font-bold text-amber-400">100% Conservada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 4: Cuestionario Interactivo Multi-Etapa (Quiz Pedagógico) -->
+    <section id="cuestionario" class="py-14 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Evaluación Formativa</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 mt-3">Desafío Multi-Etapa sobre la Energía</h2>
+            <p class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+                Supera 3 etapas progresivas (9 preguntas en total). Recibirás retroalimentación inmediata en cada respuesta para afianzar tu aprendizaje.
+            </p>
+        </div>
+
+        <!-- Indicador de Etapas -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6" id="quiz-stage-indicators">
+            <!-- Generado por JS -->
+        </div>
+
+        <!-- Tarjeta Principal del Quiz -->
+        <div id="quiz-container" class="bg-white rounded-3xl border border-amber-200 shadow-xl shadow-amber-900/5 p-6 sm:p-8">
+            <!-- Renderizado dinámico por JS -->
+        </div>
+    </section>
+
+    <!-- Pie de Página Limpio y Discreto -->
+    <footer class="border-t border-amber-200/80 bg-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-2 font-semibold text-slate-700">
+                <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i>
+                <span>EnergíaLab · Ciencias Naturales y Física</span>
+            </div>
+            <p>Material didáctico interactivo sobre manifestaciones y conservación de la energía.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica de la Aplicación -->
+    <script>
+        // =========================================================================
+        // 1. BASE DE DATOS EDUCATIVA: LOS 6 TIPOS DE ENERGÍA
+        // =========================================================================
+        const ENERGIES_DATA = [
+            {
+                id: 'electrica',
+                name: 'Energía Eléctrica',
+                shortName: 'Eléctrica',
+                icon: 'zap',
+                badge: 'Movimiento de Cargas',
+                tagline: 'El flujo ordenado de electrones a través de materiales conductores.',
+                theory: `La energía eléctrica se origina por la diferencia de potencial eléctrico (voltaje) entre dos puntos, lo que impulsa el movimiento ordenado de cargas eléctricas —generalmente electrones— a través de un material conductor como el cobre. Es la forma de energía más versátil de la sociedad moderna porque puede transportarse a grandes distancias y convertirse fácilmente en luz, calor o movimiento.`,
+                subtypes: [
+                    {
+                        title: 'Corriente Continua (CC / DC)',
+                        desc: 'Los electrones fluyen siempre en un mismo sentido. Es la que entregan las pilas, baterías y paneles solares.'
+                    },
+                    {
+                        title: 'Corriente Alterna (CA / AC)',
+                        desc: 'El sentido del flujo eléctrico cambia periódicamente (50 o 60 veces por segundo). Es la que llega a los enchufes de nuestros hogares.'
+                    }
+                ],
+                characteristics: [
+                    'Se mide mediante magnitudes como el Voltaje (V), la Intensidad de corriente (A) y la Potencia (W).',
+                    'Requiere un circuito cerrado y materiales conductores (metales, soluciones salinas) para circular.',
+                    'Se produce en centrales hidroeléctricas, eólicas, solares, térmicas y nucleares.'
+                ],
+                examples: [
+                    'Iluminación de viviendas y alumbrado público',
+                    'Funcionamiento de electrodomésticos y computadoras',
+                    'Los rayos durante una tormenta eléctrica natural',
+                    'Impulsos nerviosos en el cerebro humano'
+                ],
+                funFact: 'El cerebro humano adulto genera continuamente entre 12 y 25 vatios de potencia eléctrica mediante señales bioeléctricas entre neuronas, suficiente para encender una lámpara LED de bajo consumo.',
+                svgDiagram: `
+                    <svg viewBox="0 0 440 280" class="w-full h-auto" role="img" aria-label="Diagrama de circuito eléctrico con flujo de electrones">
+                        <rect x="0" y="0" width="440" height="280" rx="18" fill="#fffbeb"/>
+                        <!-- Cable del circuito -->
+                        <rect x="75" y="65" width="290" height="145" rx="22" fill="none" stroke="#334155" stroke-width="8"/>
+                        <rect x="75" y="65" width="290" height="145" rx="22" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10 10" class="animate-dash"/>
+                        
+                        <!-- Batería a la izquierda -->
+                        <rect x="45" y="102" width="60" height="72" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5"/>
+                        <rect x="63" y="94" width="24" height="8" rx="2" fill="#f59e0b"/>
+                        <text x="75" y="127" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-weight="800" font-size="14">+</text>
+                        <text x="75" y="143" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-weight="700" font-size="10">FUENTE</text>
+                        <text x="75" y="162" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-weight="800" font-size="14">−</text>
+
+                        <!-- Lámpara a la derecha -->
+                        <circle cx="365" cy="138" r="34" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
+                        <circle cx="365" cy="138" r="22" fill="#fbbf24"/>
+                        <path d="M357 144 Q365 124 373 144" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Rayos de luz -->
+                        <line x1="365" y1="90" x2="365" y2="98" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="406" y1="114" x2="399" y2="119" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="406" y1="162" x2="399" y2="157" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+
+                        <!-- Electrones marcados -->
+                        <g transform="translate(175, 65)">
+                            <circle cx="0" cy="0" r="11" fill="#0f172a"/>
+                            <text x="0" y="4" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-weight="800" font-size="11">e⁻</text>
+                        </g>
+                        <g transform="translate(265, 65)">
+                            <circle cx="0" cy="0" r="11" fill="#0f172a"/>
+                            <text x="0" y="4" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-weight="800" font-size="11">e⁻</text>
+                        </g>
+                        <g transform="translate(220, 210)">
+                            <circle cx="0" cy="0" r="11" fill="#0f172a"/>
+                            <text x="0" y="4" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-weight="800" font-size="11">e⁻</text>
+                        </g>
+
+                        <!-- Etiquetas claras -->
+                        <rect x="135" y="22" width="170" height="24" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+                        <text x="220" y="38" text-anchor="middle" fill="#92400e" font-family="Inter, sans-serif" font-weight="700" font-size="11">Flujo de electrones (e⁻)</text>
+                        <text x="220" y="252" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="600" font-size="11">Conductor metálico (Circuito cerrado)</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'quimica',
+                name: 'Energía Química',
+                shortName: 'Química',
+                icon: 'flask-conical',
+                badge: 'Enlaces Atómicos',
+                tagline: 'Energía potencial almacenada en la estructura interna de la materia.',
+                theory: `La energía química es una forma de energía potencial almacenada en los enlaces que mantienen unidos a los átomos dentro de las moléculas. Cuando ocurre una reacción química —como la combustión o la digestión celular—, esos enlaces se rompen y se reorganizan formando nuevas sustancias, liberando o absorbiendo energía en el proceso.`,
+                subtypes: [
+                    {
+                        title: 'Reacciones Exotérmicas',
+                        desc: 'Liberan energía química hacia el entorno en forma de calor o luz, como al quemar madera, gas natural o gasolina.'
+                    },
+                    {
+                        title: 'Reacciones Endotérmicas',
+                        desc: 'Absorben energía para formar enlaces ricos en energía, como ocurre en las plantas durante la fotosíntesis.'
+                    }
+                ],
+                characteristics: [
+                    'Permanece latente y estable hasta que se desencadena una reacción química.',
+                    'Es la principal fuente de energía para los seres vivos (ATP y glucosa).',
+                    'Permite almacenar energía de forma portátil en baterías y combustibles.'
+                ],
+                examples: [
+                    'Los alimentos (carbohidratos, grasas y proteínas) que ingerimos',
+                    'Pilas alcalinas y baterías de iones de litio de celulares',
+                    'Combustibles fósiles (nafta, gasoil, carbón) y biocombustibles',
+                    'La fotosíntesis en las hojas de las plantas'
+                ],
+                funFact: 'Un solo gramo de grasa almacena aproximadamente 9 kilocalorías (unos 37.600 Joules) de energía química, más del doble que un gramo de carbohidratos o proteínas.',
+                svgDiagram: `
+                    <svg viewBox="0 0 440 280" class="w-full h-auto" role="img" aria-label="Diagrama de ruptura de enlaces moleculares liberando energía química">
+                        <rect x="0" y="0" width="440" height="280" rx="18" fill="#fffbeb"/>
+                        
+                        <!-- Molécula izquierda -->
+                        <text x="115" y="38" text-anchor="middle" fill="#92400e" font-family="Inter, sans-serif" font-weight="700" font-size="12">Enlaces Moleculares</text>
+                        <line x1="80" y1="115" x2="150" y2="115" stroke="#d97706" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="115" y1="115" x2="115" y2="175" stroke="#d97706" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="80" cy="115" r="20" fill="#1e293b"/>
+                        <text x="80" y="120" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-weight="700" font-size="12">H</text>
+                        <circle cx="150" cy="115" r="20" fill="#1e293b"/>
+                        <text x="150" y="120" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-weight="700" font-size="12">H</text>
+                        <circle cx="115" cy="175" r="24" fill="#f59e0b"/>
+                        <text x="115" y="180" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="800" font-size="13">C</text>
+
+                        <!-- Flecha de Reacción -->
+                        <path d="M195 140 L245 140" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+                        <polygon points="245,133 258,140 245,147" fill="#0f172a"/>
+                        <text x="225" y="125" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="700" font-size="11">Reacción</text>
+
+                        <!-- Destello de Liberación de Energía a la derecha -->
+                        <polygon points="335,68 352,108 395,108 360,134 373,176 335,150 297,176 310,134 275,108 318,108" fill="#fbbf24" stroke="#d97706" stroke-width="2.5"/>
+                        <text x="335" y="132" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="800" font-size="11">ENERGÍA</text>
+                        <text x="335" y="146" text-anchor="middle" fill="#78350f" font-family="Inter, sans-serif" font-weight="700" font-size="10">Liberada</text>
+
+                        <!-- Etiquetas inferiores -->
+                        <text x="115" y="238" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="600" font-size="11">Almacenada en enlaces</text>
+                        <text x="335" y="238" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="600" font-size="11">Calor, luz o electricidad</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'mecanica',
+                name: 'Energía Mecánica',
+                shortName: 'Mecánica',
+                icon: 'cog',
+                badge: 'Movimiento y Posición',
+                tagline: 'La suma de la energía del movimiento y la energía almacenada por posición.',
+                theory: `La energía mecánica ($E_m$) es la capacidad de un cuerpo para realizar trabajo mecánico debido a su movimiento o a su posición dentro de un campo de fuerzas. Se calcula sumando dos componentes fundamentales: la Energía Cinética ($E_c$) y la Energía Potencial ($E_p$), expresado como $E_m = E_c + E_p$.`,
+                subtypes: [
+                    {
+                        title: 'Energía Cinética (Ec = ½ · m · v²)',
+                        desc: 'Es la energía que posee todo cuerpo por estar en movimiento. Depende de su masa (m) y del cuadrado de su velocidad (v).'
+                    },
+                    {
+                        title: 'Energía Potencial (Ep = m · g · h)',
+                        desc: 'Es energía almacenada según la altura (h) respecto al suelo (gravitatoria) o por deformar un resorte o arco (elástica).'
+                    }
+                ],
+                characteristics: [
+                    'Si no hay rozamiento, cuando la energía potencial disminuye (al caer), la cinética aumenta en igual proporción.',
+                    'Es visible y macroscópica: impulsa vehículos, turbinas, proyectiles y maquinaria.',
+                    'El viento (energía eólica) y el agua en movimiento (hidráulica) son manifestaciones de energía mecánica.'
+                ],
+                examples: [
+                    'Un carro de montaña rusa descendiendo a gran velocidad',
+                    'El agua represada en una central hidroeléctrica',
+                    'Un resorte comprimido o la cuerda tensa de un arco',
+                    'El giro de las aspas de un aerogenerador eólico'
+                ],
+                funFact: 'Como la energía cinética depende de la velocidad al cuadrado ($v^2$), si un automóvil duplica su velocidad (por ejemplo, de 50 a 100 km/h), su energía cinética se cuadruplica, exigiendo 4 veces más distancia de frenado.',
+                svgDiagram: `
+                    <svg viewBox="0 0 440 280" class="w-full h-auto" role="img" aria-label="Diagrama de conservación entre energía potencial y cinética en una rampa">
+                        <rect x="0" y="0" width="440" height="280" rx="18" fill="#fffbeb"/>
+                        
+                        <!-- Suelo y Rampa -->
+                        <line x1="35" y1="225" x2="405" y2="225" stroke="#94a3b8" stroke-width="3"/>
+                        <path d="M 65 75 Q 145 225 385 225" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+
+                        <!-- Línea de altura H -->
+                        <line x1="65" y1="75" x2="65" y2="225" stroke="#d97706" stroke-width="2" stroke-dasharray="4 4"/>
+                        <text x="50" y="155" text-anchor="middle" fill="#b45309" font-family="Inter, sans-serif" font-weight="800" font-size="12">h</text>
+
+                        <!-- Esfera 1 (Arriba: Máxima Potencial) -->
+                        <circle cx="72" cy="64" r="14" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5"/>
+                        <rect x="100" y="42" width="142" height="38" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+                        <text x="171" y="58" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="11">Máxima Ep (Altura)</text>
+                        <text x="171" y="72" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-weight="600" font-size="10">Ec = 0 (Reposo)</text>
+
+                        <!-- Esfera 2 (Abajo: Máxima Cinética) -->
+                        <circle cx="325" cy="211" r="14" fill="#0f172a" stroke="#f59e0b" stroke-width="2.5"/>
+                        <path d="M346 211 L384 211" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+                        <polygon points="384,205 395,211 384,217" fill="#d97706"/>
+                        
+                        <rect x="235" y="142" width="165" height="38" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+                        <text x="317" y="158" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="11">Máxima Ec (Velocidad)</text>
+                        <text x="317" y="172" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-weight="600" font-size="10">Ep = 0 (Nivel suelo)</text>
+
+                        <text x="220" y="256" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="700" font-size="11">Em = Ep + Ec = Constante</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'termica',
+                name: 'Energía Térmica',
+                shortName: 'Térmica',
+                icon: 'flame',
+                badge: 'Agitación Molecular',
+                tagline: 'La energía interna asociada al movimiento desordenado de átomos y moléculas.',
+                theory: `La energía térmica es la energía cinética interna que poseen las partículas (átomos y moléculas) que componen un cuerpo debido a su constante vibración y movimiento aleatorio. Cuanto mayor es la agitación microscópica de sus partículas, mayor es su temperatura. Cuando esta energía se transfiere de un cuerpo más caliente a otro más frío, ese tránsito se denomina calor.`,
+                subtypes: [
+                    {
+                        title: 'Conducción y Convección',
+                        desc: 'La conducción ocurre por contacto directo en sólidos (una cuchara metálica en sopa caliente); la convección por corrientes en fluidos (aire o agua).'
+                    },
+                    {
+                        title: 'Radiación Térmica',
+                        desc: 'Transferencia de calor mediante ondas electromagnéticas infrarrojas sin necesidad de contacto ni medio material (el calor del Sol).'
+                    }
+                ],
+                characteristics: [
+                    'Fluye espontáneamente siempre desde los cuerpos de mayor temperatura hacia los de menor temperatura.',
+                    'Provoca cambios de estado en la materia (fusión, evaporación) y dilatación térmica.',
+                    'Es el destino final de gran parte de las transformaciones energéticas.'
+                ],
+                examples: [
+                    'Hervir agua en una pava o cocinar alimentos al horno',
+                    'La calefacción de un ambiente mediante estufas o radiadores',
+                    'La energía geotérmica procedente del interior de la Tierra',
+                    'El calor que desprende el motor de un auto tras funcionar'
+                ],
+                funFact: 'Un iceberg gigante tiene mucha más energía térmica total que una taza de café hirviendo: aunque el café tiene mayor temperatura (velocidad promedio por molécula), el iceberg posee billones de veces más moléculas en vibración.',
+                svgDiagram: `
+                    <svg viewBox="0 0 440 280" class="w-full h-auto" role="img" aria-label="Comparación de agitación de partículas entre baja y alta temperatura">
+                        <rect x="0" y="0" width="440" height="280" rx="18" fill="#fffbeb"/>
+                        
+                        <!-- Caja Izquierda: Baja Temperatura -->
+                        <rect x="35" y="55" width="165" height="155" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+                        <text x="117" y="42" text-anchor="middle" fill="#334155" font-family="Inter, sans-serif" font-weight="700" font-size="12">Baja Temperatura</text>
+                        <!-- Partículas ordenadas/lentas -->
+                        <circle cx="80" cy="100" r="10" fill="#64748b"/>
+                        <circle cx="150" cy="105" r="10" fill="#64748b"/>
+                        <circle cx="85" cy="160" r="10" fill="#64748b"/>
+                        <circle cx="152" cy="162" r="10" fill="#64748b"/>
+                        <circle cx="117" cy="132" r="10" fill="#64748b"/>
+                        <text x="117" y="232" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="600" font-size="11">Vibración lenta</text>
+
+                        <!-- Flecha de Calor -->
+                        <path d="M206 132 L234 132" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+                        <polygon points="234,126 244,132 234,138" fill="#d97706"/>
+                        <text x="220" y="118" text-anchor="middle" fill="#b45309" font-family="Inter, sans-serif" font-weight="800" font-size="10">+Calor</text>
+
+                        <!-- Caja Derecha: Alta Temperatura -->
+                        <rect x="245" y="55" width="165" height="155" rx="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5"/>
+                        <text x="327" y="42" text-anchor="middle" fill="#b45309" font-family="Inter, sans-serif" font-weight="700" font-size="12">Alta Temperatura</text>
+                        <!-- Partículas agitadas con estelas -->
+                        <circle cx="285" cy="95" r="10" fill="#d97706"/>
+                        <path d="M270 85 L278 90 M294 102 L302 108" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+                        
+                        <circle cx="365" cy="100" r="10" fill="#d97706"/>
+                        <path d="M375 88 L382 82 M352 110 L346 116" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+
+                        <circle cx="325" cy="135" r="10" fill="#dc2626"/>
+                        <path d="M310 135 L302 135 M340 135 L348 135" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+
+                        <circle cx="285" cy="172" r="10" fill="#d97706"/>
+                        <path d="M274 180 L268 186 M296 164 L302 158" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+
+                        <circle cx="368" cy="170" r="10" fill="#d97706"/>
+                        <path d="M356 162 L350 156 M378 178 L385 184" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+
+                        <text x="327" y="232" text-anchor="middle" fill="#92400e" font-family="Inter, sans-serif" font-weight="700" font-size="11">Agitación molecular rápida</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'luminica',
+                name: 'Energía Lumínica',
+                shortName: 'Lumínica',
+                icon: 'sun',
+                badge: 'Radiación Visible',
+                tagline: 'La fracción del espectro electromagnético capaz de ser percibida por el ojo humano.',
+                theory: `La energía lumínica (o luminosa) es la energía transportada por las ondas electromagnéticas de la luz visible. Se propaga a través de partículas sin masa llamadas fotones, viajando en el vacío a la máxima velocidad posible en el universo: aproximadamente 300.000 kilómetros por segundo. A diferencia del sonido, no necesita un medio material para viajar.`,
+                subtypes: [
+                    {
+                        title: 'Fuentes Lumínicas Naturales',
+                        desc: 'Emiten luz sin intervención humana, como el Sol (por fusión nuclear), las estrellas, el fuego o organismos bioluminiscentes.'
+                    },
+                    {
+                        title: 'Fuentes Lumínicas Artificiales',
+                        desc: 'Dispositivos creados para transformar electricidad u otras energías en luz, como lámparas LED, tubos fluorescentes y láseres.'
+                    }
+                ],
+                characteristics: [
+                    'Se propaga en línea recta en medios homogéneos y puede reflejarse, refractarse o absorberse.',
+                    'Su longitud de onda determina el color que percibimos (del violeta al rojo).',
+                    'Los paneles fotovoltaicos convierten directamente los fotones en corriente eléctrica.'
+                ],
+                examples: [
+                    'La radiación solar que ilumina la Tierra y permite la vida',
+                    'El funcionamiento de pantallas de teléfonos, televisores y LEDs',
+                    'Los paneles solares fotovoltaicos en techos y parques solares',
+                    'Las fibras ópticas que transmiten datos mediante pulsos de luz'
+                ],
+                funFact: 'La luz emitida por la superficie del Sol tarda exactamente 8 minutos y 20 segundos en recorrer los 150 millones de kilómetros que lo separan de la Tierra.',
+                svgDiagram: `
+                    <svg viewBox="0 0 440 280" class="w-full h-auto" role="img" aria-label="Propagación de onda electromagnética y espectro visible">
+                        <rect x="0" y="0" width="440" height="280" rx="18" fill="#fffbeb"/>
+                        
+                        <!-- Fuente de Luz (Sol) -->
+                        <circle cx="75" cy="135" r="32" fill="#fbbf24" stroke="#d97706" stroke-width="3"/>
+                        <text x="75" y="139" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="800" font-size="11">Fotones</text>
+
+                        <!-- Onda sinusoidal de luz -->
+                        <path d="M 115 135 Q 140 75, 165 135 T 215 135 T 265 135 T 315 135" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+                        
+                        <!-- Línea de longitud de onda -->
+                        <line x1="140" y1="88" x2="240" y2="88" stroke="#0f172a" stroke-width="1.5"/>
+                        <line x1="140" y1="82" x2="140" y2="94" stroke="#0f172a" stroke-width="1.5"/>
+                        <line x1="240" y1="82" x2="240" y2="94" stroke="#0f172a" stroke-width="1.5"/>
+                        <text x="190" y="75" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="11">Longitud de onda (λ)</text>
+
+                        <!-- Prisma / Espectro visible a la derecha -->
+                        <polygon points="325,135 395,85 395,185" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                        <rect x="372" y="96" width="18" height="12" fill="#ef4444"/>
+                        <rect x="372" y="108" width="18" height="12" fill="#f97316"/>
+                        <rect x="372" y="120" width="18" height="12" fill="#eab308"/>
+                        <rect x="372" y="132" width="18" height="12" fill="#22c55e"/>
+                        <rect x="372" y="144" width="18" height="12" fill="#3b82f6"/>
+                        <rect x="372" y="156" width="18" height="12" fill="#8b5cf6"/>
+
+                        <text x="220" y="232" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="700" font-size="11">Velocidad en el vacío (c) ≈ 300.000 km/s</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'sonora',
+                name: 'Energía Sonora',
+                shortName: 'Sonora',
+                icon: 'volume-2',
+                badge: 'Ondas Mecánicas',
+                tagline: 'La energía transportada por las vibraciones que se propagan en un medio material.',
+                theory: `La energía sonora (o acústica) es la energía que transmiten las ondas sonoras al propagarse. Se origina cuando un objeto vibra y empuja las partículas del medio que lo rodea (aire, agua o un sólido), generando zonas alternas de compresión y descompresión que viajan hasta llegar a nuestros oídos y hacer vibrar el tímpano.`,
+                subtypes: [
+                    {
+                        title: 'Frecuencia (Tono)',
+                        desc: 'Cantidad de vibraciones por segundo, medida en Hertz (Hz). A mayor frecuencia, el sonido es más agudo; a menor, más grave.'
+                    },
+                    {
+                        title: 'Amplitud (Intensidad / Volumen)',
+                        desc: 'Indica cuánta energía transporta la onda sonora, medida en decibelios (dB). A mayor amplitud, más fuerte percibimos el sonido.'
+                    }
+                ],
+                characteristics: [
+                    'Es una onda mecánica longitudinal: NO puede propagarse en el vacío espacial.',
+                    'Viaja más rápido en los sólidos (~5.000 m/s en acero) y líquidos (~1.480 m/s en agua) que en el aire (~343 m/s).',
+                    'El oído humano percibe frecuencias entre 20 Hz y 20.000 Hz.'
+                ],
+                examples: [
+                    'Las cuerdas vibrantes de una guitarra o la membrana de un tambor',
+                    'La voz humana producida por la vibración de las cuerdas vocales',
+                    'Los altavoces (parlantes) que convierten impulsos eléctricos en vibración',
+                    'Las ecografías médicas y el sonar de submarinos o murciélagos'
+                ],
+                funFact: 'En el espacio exterior existe un silencio absoluto: aunque ocurriera una gigantesca explosión estelar a pocos metros de una nave, no se escucharía nada porque no hay moléculas de aire para transmitir la onda sonora.',
+                svgDiagram: `
+                    <svg viewBox="0 0 440 280" class="w-full h-auto" role="img" aria-label="Propagación de ondas sonoras por compresión de partículas de aire">
+                        <rect x="0" y="0" width="440" height="280" rx="18" fill="#fffbeb"/>
+                        
+                        <!-- Parlante a la izquierda -->
+                        <polygon points="45,115 72,115 102,85 102,185 72,155 45,155" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5"/>
+                        
+                        <!-- Arcos de onda sonora -->
+                        <path d="M 118 112 Q 132 135 118 158" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round"/>
+                        <path d="M 136 96 Q 156 135 136 174" fill="none" stroke="#d97706" stroke-width="3.5" stroke-linecap="round"/>
+                        <path d="M 155 80 Q 182 135 155 190" fill="none" stroke="#b45309" stroke-width="3.5" stroke-linecap="round"/>
+
+                        <!-- Representación de moléculas de aire (Compresión vs Rarefacción) -->
+                        <g transform="translate(205, 85)">
+                            <rect x="0" y="0" width="195" height="100" rx="12" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+                            <!-- Zona comprimida 1 -->
+                            <circle cx="24" cy="25" r="3.5" fill="#0f172a"/><circle cx="32" cy="40" r="3.5" fill="#0f172a"/><circle cx="22" cy="55" r="3.5" fill="#0f172a"/><circle cx="30" cy="72" r="3.5" fill="#0f172a"/>
+                            <circle cx="40" cy="30" r="3.5" fill="#0f172a"/><circle cx="38" cy="50" r="3.5" fill="#0f172a"/><circle cx="42" cy="68" r="3.5" fill="#0f172a"/>
+                            <!-- Zona expandida -->
+                            <circle cx="75" cy="32" r="3.5" fill="#94a3b8"/><circle cx="95" cy="62" r="3.5" fill="#94a3b8"/><circle cx="112" cy="38" r="3.5" fill="#94a3b8"/>
+                            <!-- Zona comprimida 2 -->
+                            <circle cx="145" cy="25" r="3.5" fill="#0f172a"/><circle cx="153" cy="42" r="3.5" fill="#0f172a"/><circle cx="144" cy="60" r="3.5" fill="#0f172a"/><circle cx="152" cy="75" r="3.5" fill="#0f172a"/>
+                            <circle cx="162" cy="32" r="3.5" fill="#0f172a"/><circle cx="160" cy="52" r="3.5" fill="#0f172a"/><circle cx="163" cy="68" r="3.5" fill="#0f172a"/>
+                        </g>
+
+                        <text x="238" y="205" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="10">Compresión</text>
+                        <text x="302" y="205" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-weight="600" font-size="10">Expansión</text>
+                        <text x="362" y="205" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-weight="700" font-size="10">Compresión</text>
+
+                        <text x="220" y="246" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-weight="700" font-size="11">Requiere medio material (aire, agua o sólido)</text>
+                    </svg>
+                `
+            }
+        ];
+
+        // =========================================================================
+        // 2. BASE DE DATOS DEL SIMULADOR DE TRANSFORMACIONES
+        // =========================================================================
+        const SIMULATOR_SCENARIOS = [
+            {
+                id: 'linterna',
+                shortTitle: 'Linterna a pilas',
+                title: 'Encender una linterna a pilas',
+                subtitle: 'Conversión secuencial desde enlaces químicos hasta fotones de luz visible.',
+                heatNote: 'Tanto la pila como el foco LED se entibian levemente: cerca del 15-20% de la energía se disipa como calor.',
+                nodes: [
+                    { label: 'Energía Química', sub: 'Interior de la pila', icon: '🧪' },
+                    { label: 'Energía Eléctrica', sub: 'Flujo en el cable', icon: '⚡' },
+                    { label: 'Energía Lumínica', sub: 'Haz de luz útil', icon: '☀️' }
+                ],
+                steps: [
+                    {
+                        heading: '1. Energía Química Almacenada',
+                        desc: 'Dentro de las pilas hay compuestos químicos con electrones listos para reaccionar. Mientras el interruptor está abierto, la energía permanece almacenada en estado potencial.'
+                    },
+                    {
+                        heading: '2. Transformación a Energía Eléctrica',
+                        desc: 'Al presionar el botón y cerrar el circuito, ocurre una reacción electroquímica dentro de la pila que impulsa una corriente continua de electrones por los conductores metálicos.'
+                    },
+                    {
+                        heading: '3. Emisión de Energía Lumínica (+ Térmica)',
+                        desc: 'Al atravesar el diodo LED o filamento, los electrones excitan los átomos del material, liberando fotones de energía lumínica. Simultáneamente, el rozamiento eléctrico libera calor.'
+                    }
+                ]
+            },
+            {
+                id: 'bicicleta',
+                shortTitle: 'Andar en bicicleta',
+                title: 'Pedalear en una bicicleta',
+                subtitle: 'De los nutrientes de tu desayuno al movimiento sobre ruedas.',
+                heatNote: 'Tus músculos sudan y los neumáticos rozan el asfalto: gran parte de la energía química se convierte en calor corporal.',
+                nodes: [
+                    { label: 'Energía Química', sub: 'Glucosa en músculos', icon: '🍎' },
+                    { label: 'Energía Mecánica', sub: 'Pedaleo y avance', icon: '⚙️' },
+                    { label: 'Energía Térmica', sub: 'Calor y fricción', icon: '🔥' }
+                ],
+                steps: [
+                    {
+                        heading: '1. Energía Química en las Células',
+                        desc: 'Los alimentos que digieres aportan glucosa a tus fibras musculares. Esta molécula guarda energía química en sus enlaces de carbono e hidrógeno.'
+                    },
+                    {
+                        heading: '2. Conversión a Energía Mecánica',
+                        desc: 'Tus músculos contraen sus fibras transformando energía química en fuerza mecánica sobre los pedales, haciendo girar los platos, la cadena y las ruedas (energía cinética).'
+                    },
+                    {
+                        heading: '3. Disipación como Energía Térmica',
+                        desc: 'El metabolismo muscular aumenta tu temperatura corporal y el rozamiento de los frenos o cubiertas contra el suelo disipa energía térmica al aire.'
+                    }
+                ]
+            },
+            {
+                id: 'hidroelectrica',
+                shortTitle: 'Central Hidroeléctrica',
+                title: 'Generación en una Represa Hidroeléctrica',
+                subtitle: 'Aprovechamiento de la gravedad y el caudal de un río para producir electricidad.',
+                heatNote: 'La fricción mecánica en los rodamientos de la turbina y el efecto Joule en los transformadores generan calor residual.',
+                nodes: [
+                    { label: 'E. Mecánica (Potencial)', sub: 'Agua embalsada arriba', icon: '💧' },
+                    { label: 'E. Mecánica (Cinética)', sub: 'Giro de la turbina', icon: '⚙️' },
+                    { label: 'Energía Eléctrica', sub: 'Red de alta tensión', icon: '⚡' }
+                ],
+                steps: [
+                    {
+                        heading: '1. Energía Potencial Gravitatoria',
+                        desc: 'El dique retiene millones de litros de agua a gran altura. Gracias a su elevación respecto al cauce inferior, el agua acumula enorme energía mecánica potencial.'
+                    },
+                    {
+                        heading: '2. Energía Cinética Rotacional',
+                        desc: 'Al abrir las compuertas, el agua cae con fuerza por tuberías forzadas e impacta contra los álabes de una turbina, haciéndola girar a gran velocidad.'
+                    },
+                    {
+                        heading: '3. Inducción de Energía Eléctrica',
+                        desc: 'La turbina mueve el eje de un generador con electroimanes giratorios, induciendo corriente eléctrica alterna que viaja hacia ciudades e industrias.'
+                    }
+                ]
+            },
+            {
+                id: 'guitarra',
+                shortTitle: 'Tocar una guitarra',
+                title: 'Pulsar las cuerdas de una guitarra acústica',
+                subtitle: 'Cómo un movimiento de los dedos se convierte en música audible.',
+                heatNote: 'La fricción interna de las cuerdas y la absorción del aire transforman finalmente la vibración sonora en un leve aumento térmico.',
+                nodes: [
+                    { label: 'E. Mecánica (Elástica)', sub: 'Tensión de la cuerda', icon: '🎸' },
+                    { label: 'E. Mecánica (Cinética)', sub: 'Vibración de caja', icon: '〰️' },
+                    { label: 'Energía Sonora', sub: 'Ondas en el aire', icon: '🔊' }
+                ],
+                steps: [
+                    {
+                        heading: '1. Deformación Elástica de la Cuerda',
+                        desc: 'Al tirar de una cuerda con tus dedos, la estiras fuera de su posición de equilibrio, almacenando brevemente energía mecánica potencial elástica.'
+                    },
+                    {
+                        heading: '2. Vibración Mecánica y Resonancia',
+                        desc: 'Al soltarla, la cuerda oscila decenas o cientos de veces por segundo. Esa vibración mecánica se transmite a la tapa de madera y al aire dentro de la caja de resonancia.'
+                    },
+                    {
+                        heading: '3. Propagación de Energía Sonora',
+                        desc: 'La caja amplifica las ondas de presión en el aire circundante, propagando energía sonora hasta alcanzar nuestros oídos.'
+                    }
+                ]
+            },
+            {
+                id: 'hornalla',
+                shortTitle: 'Cocinar a gas',
+                title: 'Calentar agua en una hornalla a gas',
+                subtitle: 'Combustión controlada para transferir calor hacia un recipiente.',
+                heatNote: 'Gran parte del calor de la llama escapa hacia el aire de la cocina sin entrar en la olla, por eso tapar las ollas ahorra energía.',
+                nodes: [
+                    { label: 'Energía Química', sub: 'Gas natural (Metano)', icon: '⛽' },
+                    { label: 'E. Térmica + Lumínica', sub: 'Llama de combustión', icon: '🔥' },
+                    { label: 'Energía Térmica', sub: 'Agitación del agua', icon: '♨️' }
+                ],
+                steps: [
+                    {
+                        heading: '1. Energía Química del Combustible',
+                        desc: 'El gas natural (principalmente metano) contiene enlaces químicos ricos en energía que se mezclan con el oxígeno del aire en el quemador.'
+                    },
+                    {
+                        heading: '2. Combustión: Calor y Luz Azul',
+                        desc: 'La chispa inicia una reacción exotérmica rápida: se libera intensa energía térmica y una pequeña fracción de energía lumínica visible (la llama azul).'
+                    },
+                    {
+                        heading: '3. Conducción y Convección Térmica',
+                        desc: 'El metal de la olla conduce el calor hacia el interior, acelerando las moléculas de agua líquida hasta alcanzar el punto de ebullición (100 °C).'
+                    }
+                ]
+            },
+            {
+                id: 'fotosintesis',
+                shortTitle: 'Fotosíntesis vegetal',
+                title: 'La fotosíntesis en las hojas de una planta',
+                subtitle: 'El proceso biológico que transforma luz solar en alimento para toda la biosfera.',
+                heatNote: 'Las plantas solo aprovechan una fracción de la luz que reciben; el resto se refleja (por eso las vemos verdes) o se disipa como calor.',
+                nodes: [
+                    { label: 'Energía Lumínica', sub: 'Fotones del Sol', icon: '☀️' },
+                    { label: 'Reacción Fotoquímica', sub: 'Clorofila activada', icon: '🌿' },
+                    { label: 'Energía Química', sub: 'Glucosa y almidón', icon: '🧪' }
+                ],
+                steps: [
+                    {
+                        heading: '1. Captación de Energía Lumínica',
+                        desc: 'Los fotones de la luz solar inciden sobre las hojas y son absorbidos por las moléculas de clorofila dentro de los cloroplastos.'
+                    },
+                    {
+                        heading: '2. Excitación Electrónica en la Hoja',
+                        desc: 'La energía de la luz excita electrones en la clorofila, impulsando reacciones internas que dividen moléculas de agua y capturan dióxido de carbono ($CO_2$).'
+                    },
+                    {
+                        heading: '3. Síntesis de Energía Química (Glucosa)',
+                        desc: 'La planta fabrica glucosa ($C_6H_{12}O_6$), dejando almacenada la energía del Sol en enlaces químicos estables que alimentarán a la planta y a los herbívoros.'
+                    }
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 3. BASE DE DATOS DEL CUESTIONARIO MULTI-ETAPA (3 ETAPAS x 3 PREGUNTAS)
+        // =========================================================================
+        const QUIZ_STAGES = [
+            {
+                stageNumber: 1,
+                title: 'Etapa 1: Conceptos Fundamentales',
+                subtitle: 'Propiedades básicas, unidades y naturaleza de cada energía',
+                questions: [
+                    {
+                        q: '¿Qué establece exactamente el Principio de Conservación de la Energía?',
+                        options: [
+                            'Que la energía se crea continuamente en las centrales eléctricas.',
+                            'Que la energía no se crea ni se destruye, solo se transforma de una forma a otra.',
+                            'Que toda la energía de un objeto desaparece cuando deja de moverse.',
+                            'Que la energía lumínica es la única que puede convertirse en calor.'
+                        ],
+                        correct: 1,
+                        explanation: '¡Exacto! La cantidad total de energía en un sistema aislado permanece constante; lo único que cambia es su forma de manifestarse (por ejemplo, de movimiento a calor por rozamiento).'
+                    },
+                    {
+                        q: '¿Cuál de estas manifestaciones de la energía NO puede propagarse en el vacío del espacio exterior?',
+                        options: [
+                            'Energía Lumínica',
+                            'Radiación Térmica Infrarroja',
+                            'Energía Sonora',
+                            'Ondas de radio electromagnéticas'
+                        ],
+                        correct: 2,
+                        explanation: '¡Correcto! La energía sonora es una onda mecánica longitudinal que requiere un medio material (aire, agua o sólidos) para transmitir vibraciones entre partículas.'
+                    },
+                    {
+                        q: 'La energía mecánica total de un cuerpo se obtiene sumando:',
+                        options: [
+                            'Energía eléctrica + Energía térmica',
+                            'Energía cinética + Energía potencial',
+                            'Energía química + Energía sonora',
+                            'Temperatura + Masa del cuerpo'
+                        ],
+                        correct: 1,
+                        explanation: '¡Muy bien! La energía mecánica (Em) integra la energía asociada al movimiento (cinética) y la energía almacenada por su altura o deformación elástica (potencial).'
+                    }
+                ]
+            },
+            {
+                stageNumber: 2,
+                title: 'Etapa 2: Identificación Cotidiana',
+                subtitle: 'Reconociendo las manifestaciones en objetos y fenómenos reales',
+                questions: [
+                    {
+                        q: '¿Qué tipo de energía se encuentra almacenada en una batería de celular cargada y en una manzana antes de ser comida?',
+                        options: [
+                            'Energía sonora',
+                            'Energía química',
+                            'Energía cinética',
+                            'Energía lumínica'
+                        ],
+                        correct: 1,
+                        explanation: '¡Así es! Tanto las baterías electroquímicas como los nutrientes de los alimentos almacenan energía potencial química dentro de sus enlaces moleculares.'
+                    },
+                    {
+                        q: 'Si un automóvil duplica su velocidad en una ruta recta, ¿qué sucede con su energía cinética?',
+                        options: [
+                            'Permanece exactamente igual.',
+                            'Se reduce a la mitad.',
+                            'Se duplica.',
+                            'Se cuadruplica (aumenta 4 veces).'
+                        ],
+                        correct: 3,
+                        explanation: '¡Excelente deducción! Como la fórmula de energía cinética es Ec = ½ · m · v², al elevar la velocidad al cuadrado (2² = 4), la energía cinética se multiplica por 4.'
+                    },
+                    {
+                        q: '¿Qué diferencia principal existe entre energía térmica y temperatura?',
+                        options: [
+                            'No hay diferencia, son sinónimos exactos.',
+                            'La energía térmica es la energía total de agitación de todas las partículas de un cuerpo, mientras que la temperatura mide su promedio.',
+                            'La temperatura se mide en Joules y la energía térmica en metros.',
+                            'Solo los líquidos tienen energía térmica.'
+                        ],
+                        correct: 1,
+                        explanation: '¡Correcto! Por eso un iceberg gigante tiene mayor energía térmica total (por su enorme cantidad de moléculas) que una taza de té caliente, aunque su temperatura sea menor.'
+                    }
+                ]
+            },
+            {
+                stageNumber: 3,
+                title: 'Etapa 3: Transformaciones y Conservación',
+                subtitle: 'Análisis de cadenas energéticas y degradación térmica',
+                questions: [
+                    {
+                        q: 'En un parque solar fotovoltaico, ¿qué transformación principal de energía ocurre cuando el Sol ilumina los paneles?',
+                        options: [
+                            'Energía térmica → Energía sonora',
+                            'Energía lumínica → Energía eléctrica',
+                            'Energía mecánica → Energía química',
+                            'Energía química → Energía lumínica'
+                        ],
+                        correct: 1,
+                        explanation: '¡Brillante! Las celdas fotovoltaicas de silicio absorben los fotones de la energía lumínica solar y liberan electrones generando corriente eléctrica continua.'
+                    },
+                    {
+                        q: 'Cuando frenamos bruscamente una bicicleta, la energía cinética que tenía desaparece del movimiento. ¿En qué se transformó principalmente?',
+                        options: [
+                            'Se destruyó por completo al detenerse la rueda.',
+                            'Se convirtió en energía térmica (calor) por el rozamiento entre las pastillas de freno, la llanta y el suelo.',
+                            'Se transformó en energía química dentro del cuadro de metal.',
+                            'Se convirtió íntegramente en energía lumínica.'
+                        ],
+                        correct: 1,
+                        explanation: '¡Exacto! Si tocas el disco o la llanta después de frenar fuerte notarás que están calientes: la energía mecánica se transformó en energía térmica por fricción.'
+                    },
+                    {
+                        q: '¿Cuál es la cadena correcta de transformaciones al encender un ventilador enchufado a la pared?',
+                        options: [
+                            'Energía química → Energía lumínica',
+                            'Energía sonora → Energía potencial',
+                            'Energía eléctrica → Energía mecánica (+ calor residual)',
+                            'Energía térmica → Energía química'
+                        ],
+                        correct: 2,
+                        explanation: '¡Perfecto! El motor del ventilador recibe energía eléctrica de la red y la convierte en energía mecánica rotacional en sus aspas, disipando además un poco de calor.'
+                    }
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 4. ESTADO GLOBAL E INICIALIZACIÓN
+        // =========================================================================
+        let activeEnergyId = 'electrica';
+        let activeSimId = 'linterna';
+        let activeSimStep = 0;
+
+        // Estado del Quiz
+        let quizState = {
+            currentStageIdx: 0,
+            currentQuestionIdx: 0,
+            selectedOption: null,
+            answered: false,
+            stageScores: [0, 0, 0],
+            finished: false
+        };
+
+        // =========================================================================
+        // 5. RENDERIZADO DEL EXPLORADOR DE 6 ENERGÍAS
+        // =========================================================================
+        function renderEnergyExplorer() {
+            const tabsContainer = document.getElementById('energy-tabs');
+            const detailCard = document.getElementById('energy-detail-card');
+
+            // Renderizar botones de pestañas
+            tabsContainer.innerHTML = ENERGIES_DATA.map(energy => {
+                const isActive = energy.id === activeEnergyId;
+                return `
+                    <button
+                        type="button"
+                        role="tab"
+                        aria-selected="${isActive}"
+                        onclick="selectEnergy('${energy.id}')"
+                        class="shrink-0 px-4 py-3 rounded-2xl font-bold text-sm transition-all flex items-center gap-2 border ${
+                            isActive
+                                ? 'bg-slate-900 text-amber-400 border-slate-900 shadow-lg shadow-slate-900/15 scale-[1.02]'
+                                : 'bg-white text-slate-700 border-amber-200 hover:bg-amber-50 hover:border-amber-300'
+                        }"
+                    >
+                        <i data-lucide="${energy.icon}" class="w-4 h-4 ${isActive ? 'text-amber-400' : 'text-amber-600'}"></i>
+                        <span>${energy.shortName}</span>
+                    </button>
+                `;
+            }).join('');
+
+            // Renderizar tarjeta de detalle
+            const current = ENERGIES_DATA.find(e => e.id === activeEnergyId);
+            detailCard.innerHTML = `
+                <div class="grid lg:grid-cols-12">
+                    <!-- Columna Izquierda: Ilustración SVG y Dato Curioso -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-amber-50 to-amber-100/60 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-amber-200/80 flex flex-col justify-between gap-6">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 bg-amber-200/80 px-3 py-1 rounded-full">
+                                    ${current.badge}
+                                </span>
+                                <span class="text-xs font-semibold text-slate-500">Esquema Ilustrado</span>
+                            </div>
+                            <div class="bg-white rounded-2xl p-3 border border-amber-200/90 shadow-sm">
+                                ${current.svgDiagram}
+                            </div>
+                        </div>
+
+                        <!-- Dato Curioso -->
+                        <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-md">
+                            <div class="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider mb-1.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                                <span>¿Sabías qué?</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                                ${current.funFact}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Teoría Profunda, Subtipos y Ejemplos -->
+                    <div class="lg:col-span-7 p-6 sm:p-8 space-y-6">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center shadow-sm">
+                                    <i data-lucide="${current.icon}" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">${current.name}</h3>
+                                    <p class="text-sm font-medium text-amber-700">${current.tagline}</p>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                                ${current.theory}
+                            </p>
+                        </div>
+
+                        <!-- Subtipos / Clasificación Clave -->
+                        <div class="grid sm:grid-cols-2 gap-3.5">
+                            ${current.subtypes.map(sub => `
+                                <div class="bg-amber-50/70 rounded-2xl p-4 border border-amber-200/80">
+                                    <h4 class="font-display font-bold text-slate-900 text-sm">${sub.title}</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">${sub.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <!-- Características y Ejemplos -->
+                        <div class="grid sm:grid-cols-2 gap-6 pt-2 border-t border-slate-100">
+                            <div>
+                                <h4 class="font-display font-bold text-slate-900 text-sm uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-amber-600"></i>
+                                    <span>Características Clave</span>
+                                </h4>
+                                <ul class="space-y-2">
+                                    ${current.characteristics.map(item => `
+                                        <li class="text-xs sm:text-sm text-slate-600 flex items-start gap-2">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+                                            <span>${item}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="font-display font-bold text-slate-900 text-sm uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                                    <i data-lucide="compass" class="w-4 h-4 text-amber-600"></i>
+                                    <span>Ejemplos Cotidianos</span>
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    ${current.examples.map(ex => `
+                                        <span class="text-xs font-medium bg-slate-100 text-slate-800 px-3 py-1.5 rounded-xl border border-slate-200/80">
+                                            ${ex}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function selectEnergy(id) {
+            activeEnergyId = id;
+            renderEnergyExplorer();
+        }
+
+        // =========================================================================
+        // 6. RENDERIZADO DEL SIMULADOR INTERACTIVO DE TRANSFORMACIONES
+        // =========================================================================
+        function renderSimulator() {
+            const scenariosContainer = document.getElementById('sim-scenarios');
+            const scenario = SIMULATOR_SCENARIOS.find(s => s.id === activeSimId);
+
+            // Botones de escenarios
+            scenariosContainer.innerHTML = SIMULATOR_SCENARIOS.map(sc => {
+                const isActive = sc.id === activeSimId;
+                return `
+                    <button
+                        type="button"
+                        onclick="selectScenario('${sc.id}')"
+                        class="px-3 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all text-center border ${
+                            isActive
+                                ? 'bg-amber-500 text-slate-900 border-amber-400 shadow-lg shadow-amber-500/20'
+                                : 'bg-slate-800/80 text-slate-300 border-slate-700 hover:bg-slate-800 hover:text-white'
+                        }"
+                    >
+                        ${sc.shortTitle}
+                    </button>
+                `;
+            }).join('');
+
+            // Títulos y controles
+            document.getElementById('sim-title').textContent = scenario.title;
+            document.getElementById('sim-subtitle').textContent = scenario.subtitle;
+            document.getElementById('sim-heat-note').textContent = scenario.heatNote;
+
+            const prevBtn = document.getElementById('sim-prev-btn');
+            const nextBtn = document.getElementById('sim-next-btn');
+            prevBtn.disabled = activeSimStep === 0;
+            
+            if (activeSimStep === scenario.steps.length - 1) {
+                nextBtn.innerHTML = `<span>Reiniciar</span><i data-lucide="rotate-ccw" class="w-4 h-4"></i>`;
+            } else {
+                nextBtn.innerHTML = `<span>Siguiente Paso</span><i data-lucide="chevron-right" class="w-4 h-4"></i>`;
+            }
+
+            // Paso textual
+            const currentStepObj = scenario.steps[activeSimStep];
+            document.getElementById('sim-step-badge').textContent = `Etapa ${activeSimStep + 1} de ${scenario.steps.length}`;
+            document.getElementById('sim-step-heading').textContent = currentStepObj.heading;
+            document.getElementById('sim-step-desc').textContent = currentStepObj.desc;
+
+            // Diagrama SVG Animado del Flujo de 3 Nodos + Disipación Térmica
+            const svgEl = document.getElementById('sim-svg');
+            const n0 = scenario.nodes[0];
+            const n1 = scenario.nodes[1];
+            const n2 = scenario.nodes[2];
+
+            const s0Active = activeSimStep >= 0;
+            const s1Active = activeSimStep >= 1;
+            const s2Active = activeSimStep >= 2;
+
+            svgEl.innerHTML = `
+                <!-- Conector 1 -> 2 -->
+                <line x1="230" y1="85" x2="310" y2="85" stroke="${s1Active ? '#fbbf24' : '#334155'}" stroke-width="5" stroke-linecap="round" class="${s1Active ? 'animate-dash' : ''}"/>
+                <polygon points="310,77 324,85 310,93" fill="${s1Active ? '#fbbf24' : '#334155'}"/>
+
+                <!-- Conector 2 -> 3 -->
+                <line x1="500" y1="85" x2="580" y2="85" stroke="${s2Active ? '#fbbf24' : '#334155'}" stroke-width="5" stroke-linecap="round" class="${s2Active ? 'animate-dash' : ''}"/>
+                <polygon points="580,77 594,85 580,93" fill="${s2Active ? '#fbbf24' : '#334155'}"/>
+
+                <!-- Flecha de Disipación Térmica hacia abajo -->
+                <path d="M 410 135 L 410 168" stroke="${s2Active ? '#f97316' : '#334155'}" stroke-width="3" stroke-dasharray="4 4"/>
+                <polygon points="403,168 410,178 417,168" fill="${s2Active ? '#f97316' : '#334155'}"/>
+                <rect x="275" y="182" width="270" height="34" rx="10" fill="${s2Active ? '#431407' : '#1e293b'}" stroke="${s2Active ? '#f97316' : '#334155'}" stroke-width="1.5"/>
+                <text x="410" y="203" text-anchor="middle" fill="${s2Active ? '#fdba74' : '#64748b'}" font-family="Inter, sans-serif" font-weight="700" font-size="11">
+                    🔥 Disipación al ambiente como Calor (Conservación)
+                </text>
+
+                <!-- Nodo 1 -->
+                <g transform="translate(30, 35)">
+                    <rect x="0" y="0" width="195" height="100" rx="18" fill="${activeSimStep === 0 ? '#f59e0b' : '#1e293b'}" stroke="${s0Active ? '#fbbf24' : '#475569'}" stroke-width="2.5"/>
+                    <text x="97" y="34" text-anchor="middle" font-size="22">${n0.icon}</text>
+                    <text x="97" y="60" text-anchor="middle" fill="${activeSimStep === 0 ? '#0f172a' : '#ffffff'}" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="13">${n0.label}</text>
+                    <text x="97" y="79" text-anchor="middle" fill="${activeSimStep === 0 ? '#451a03' : '#94a3b8'}" font-family="Inter, sans-serif" font-weight="600" font-size="11">${n0.sub}</text>
+                </g>
+
+                <!-- Nodo 2 -->
+                <g transform="translate(324, 35)">
+                    <rect x="0" y="0" width="172" height="100" rx="18" fill="${activeSimStep === 1 ? '#f59e0b' : '#1e293b'}" stroke="${s1Active ? '#fbbf24' : '#475569'}" stroke-width="2.5"/>
+                    <text x="86" y="34" text-anchor="middle" font-size="22">${n1.icon}</text>
+                    <text x="86" y="60" text-anchor="middle" fill="${activeSimStep === 1 ? '#0f172a' : '#ffffff'}" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="13">${n1.label}</text>
+                    <text x="86" y="79" text-anchor="middle" fill="${activeSimStep === 1 ? '#451a03' : '#94a3b8'}" font-family="Inter, sans-serif" font-weight="600" font-size="11">${n1.sub}</text>
+                </g>
+
+                <!-- Nodo 3 -->
+                <g transform="translate(595, 35)">
+                    <rect x="0" y="0" width="195" height="100" rx="18" fill="${activeSimStep === 2 ? '#f59e0b' : '#1e293b'}" stroke="${s2Active ? '#fbbf24' : '#475569'}" stroke-width="2.5"/>
+                    <text x="97" y="34" text-anchor="middle" font-size="22">${n2.icon}</text>
+                    <text x="97" y="60" text-anchor="middle" fill="${activeSimStep === 2 ? '#0f172a' : '#ffffff'}" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="13">${n2.label}</text>
+                    <text x="97" y="79" text-anchor="middle" fill="${activeSimStep === 2 ? '#451a03' : '#94a3b8'}" font-family="Inter, sans-serif" font-weight="600" font-size="11">${n2.sub}</text>
+                </g>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function selectScenario(id) {
+            activeSimId = id;
+            activeSimStep = 0;
+            renderSimulator();
+        }
+
+        document.getElementById('sim-prev-btn').addEventListener('click', () => {
+            if (activeSimStep > 0) {
+                activeSimStep--;
+                renderSimulator();
+            }
+        });
+
+        document.getElementById('sim-next-btn').addEventListener('click', () => {
+            const scenario = SIMULATOR_SCENARIOS.find(s => s.id === activeSimId);
+            if (activeSimStep < scenario.steps.length - 1) {
+                activeSimStep++;
+            } else {
+                activeSimStep = 0;
+            }
+            renderSimulator();
+        });
+
+        // =========================================================================
+        // 7. RENDERIZADO DEL CUESTIONARIO MULTI-ETAPA
+        // =========================================================================
+        function renderQuiz() {
+            const indicatorsEl = document.getElementById('quiz-stage-indicators');
+            const containerEl = document.getElementById('quiz-container');
+
+            // Renderizar indicadores superiores de las 3 etapas
+            indicatorsEl.innerHTML = QUIZ_STAGES.map((st, idx) => {
+                const isCurrent = !quizState.finished && idx === quizState.currentStageIdx;
+                const isCompleted = quizState.finished || idx < quizState.currentStageIdx;
+                return `
+                    <div class="rounded-2xl p-3 sm:p-4 border transition-all ${
+                        isCurrent
+                            ? 'bg-slate-900 text-white border-slate-900 shadow-md'
+                            : isCompleted
+                                ? 'bg-amber-100/80 text-amber-900 border-amber-300'
+                                : 'bg-white text-slate-400 border-slate-200'
+                    }">
+                        <div class="flex items-center justify-between text-xs font-bold">
+                            <span>Etapa ${st.stageNumber}</span>
+                            ${isCompleted ? '<i data-lucide="check-circle" class="w-4 h-4 text-amber-600"></i>' : ''}
+                        </div>
+                        <p class="font-display font-bold text-xs sm:text-sm mt-1 truncate">
+                            ${st.title.replace(`Etapa ${st.stageNumber}: `, '')}
+                        </p>
+                    </div>
+                `;
+            }).join('');
+
+            // Pantalla de Resultados Finales
+            if (quizState.finished) {
+                const totalScore = quizState.stageScores.reduce((a, b) => a + b, 0);
+                const totalQuestions = QUIZ_STAGES.reduce((acc, s) => acc + s.questions.length, 0);
+                const percentage = Math.round((totalScore / totalQuestions) * 100);
+
+                let feedbackTitle = '¡Excelente dominio energético!';
+                let feedbackMsg = 'Comprendes con claridad cómo se manifiesta, mide y transforma la energía sin perderse.';
+                if (percentage < 50) {
+                    feedbackTitle = '¡Buen primer intento!';
+                    feedbackMsg = 'Te recomendamos volver a explorar las fichas de los 6 tipos de energía y probar el simulador antes de reintentar.';
+                } else if (percentage < 85) {
+                    feedbackTitle = '¡Muy buen desempeño!';
+                    feedbackMsg = 'Tienes una base sólida. Repasa las explicaciones de las preguntas falladas para alcanzar la perfección.';
+                }
+
+                containerEl.innerHTML = `
+                    <div class="text-center space-y-6 py-4">
+                        <div class="w-20 h-20 rounded-3xl bg-amber-400 text-slate-900 flex items-center justify-center mx-auto shadow-lg shadow-amber-400/30">
+                            <i data-lucide="trophy" class="w-10 h-10"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
+                                Desafío Completado · ${percentage}% de aciertos
+                            </span>
+                            <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 mt-3">${feedbackTitle}</h3>
+                            <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto mt-2">${feedbackMsg}</p>
+                        </div>
+
+                        <!-- Desglose por Etapas -->
+                        <div class="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto text-left">
+                            ${QUIZ_STAGES.map((st, idx) => `
+                                <div class="bg-amber-50/70 rounded-2xl p-4 border border-amber-200">
+                                    <span class="text-xs font-bold text-amber-800">Etapa ${st.stageNumber}</span>
+                                    <p class="font-display font-extrabold text-xl text-slate-900 mt-1">
+                                        ${quizState.stageScores[idx]} / ${st.questions.length}
+                                    </p>
+                                    <p class="text-xs text-slate-500 mt-0.5 truncate">${st.title.split(': ')[1]}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="pt-2">
+                            <button
+                                type="button"
+                                onclick="restartQuiz()"
+                                class="px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-lg transition-all inline-flex items-center gap-2"
+                            >
+                                <i data-lucide="rotate-ccw" class="w-4 h-4 text-amber-400"></i>
+                                <span>Volver a intentar el Desafío</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            // Renderizar Pregunta Actual
+            const currentStage = QUIZ_STAGES[quizState.currentStageIdx];
+            const currentQ = currentStage.questions[quizState.currentQuestionIdx];
+            const globalQuestionNumber = quizState.currentStageIdx * 3 + quizState.currentQuestionIdx + 1;
+            const totalScoreSoFar = quizState.stageScores.reduce((a, b) => a + b, 0);
+
+            containerEl.innerHTML = `
+                <!-- Barra Superior de Progreso -->
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-5 mb-6 border-b border-slate-100">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-700">${currentStage.title}</span>
+                        <p class="text-xs text-slate-500 mt-0.5">Pregunta ${globalQuestionNumber} de 9</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-amber-50 px-3.5 py-1.5 rounded-xl border border-amber-200">
+                        <i data-lucide="star" class="w-4 h-4 text-amber-500 fill-current"></i>
+                        <span class="text-xs font-extrabold text-slate-800">Puntaje: ${totalScoreSoFar} pts</span>
+                    </div>
+                </div>
+
+                <!-- Barra visual de progreso -->
+                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden mb-6">
+                    <div class="h-full bg-amber-500 transition-all duration-300" style="width: ${(globalQuestionNumber / 9) * 100}%"></div>
+                </div>
+
+                <!-- Enunciado de la Pregunta -->
+                <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 leading-snug mb-5">
+                    ${currentQ.q}
+                </h3>
+
+                <!-- Opciones de Respuesta -->
+                <div class="space-y-3">
+                    ${currentQ.options.map((opt, idx) => {
+                        let btnStyle = 'bg-white hover:bg-amber-50/70 border-slate-200 text-slate-800';
+                        let badgeStyle = 'bg-slate-100 text-slate-700';
+
+                        if (quizState.answered) {
+                            if (idx === currentQ.correct) {
+                                btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-950 font-semibold';
+                                badgeStyle = 'bg-emerald-500 text-white';
+                            } else if (idx === quizState.selectedOption) {
+                                btnStyle = 'bg-rose-50 border-rose-400 text-rose-950';
+                                badgeStyle = 'bg-rose-500 text-white';
+                            } else {
+                                btnStyle = 'bg-slate-50 border-slate-200 text-slate-400 opacity-70';
+                            }
+                        }
+
+                        const letters = ['A', 'B', 'C', 'D'];
+                        return `
+                            <button
+                                type="button"
+                                ${quizState.answered ? 'disabled' : ''}
+                                onclick="handleQuizAnswer(${idx})"
+                                class="w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 ${btnStyle}"
+                            >
+                                <span class="w-8 h-8 rounded-xl flex items-center justify-center font-display font-bold text-sm shrink-0 ${badgeStyle}">
+                                    ${letters[idx]}
+                                </span>
+                                <span class="text-sm sm:text-base">${opt}</span>
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+
+                <!-- Retroalimentación Inmediata -->
+                ${quizState.answered ? `
+                    <div class="mt-6 p-5 rounded-2xl border ${
+                        quizState.selectedOption === currentQ.correct
+                            ? 'bg-emerald-50/90 border-emerald-300 text-emerald-950'
+                            : 'bg-amber-50 border-amber-300 text-slate-900'
+                    }">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="${quizState.selectedOption === currentQ.correct ? 'check-circle-2' : 'info'}" class="w-5 h-5 shrink-0 mt-0.5 ${
+                                quizState.selectedOption === currentQ.correct ? 'text-emerald-600' : 'text-amber-600'
+                            }"></i>
+                            <div>
+                                <p class="font-display font-bold text-sm">
+                                    ${quizState.selectedOption === currentQ.correct ? '¡Respuesta Correcta!' : '¡Buen intento! Analicemos por qué:'}
+                                </p>
+                                <p class="text-xs sm:text-sm mt-1 leading-relaxed opacity-90">
+                                    ${currentQ.explanation}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button
+                            type="button"
+                            onclick="nextQuizQuestion()"
+                            class="px-6 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all flex items-center gap-2"
+                        >
+                            <span>${
+                                quizState.currentStageIdx === QUIZ_STAGES.length - 1 &&
+                                quizState.currentQuestionIdx === currentStage.questions.length - 1
+                                    ? 'Ver Resultados Finales'
+                                    : 'Siguiente Pregunta'
+                            }</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-amber-400"></i>
+                        </button>
+                    </div>
+                ` : ''}
+            `;
+
+            lucide.createIcons();
+        }
+
+        function handleQuizAnswer(optionIdx) {
+            if (quizState.answered) return;
+            quizState.selectedOption = optionIdx;
+            quizState.answered = true;
+
+            const currentStage = QUIZ_STAGES[quizState.currentStageIdx];
+            const currentQ = currentStage.questions[quizState.currentQuestionIdx];
+            if (optionIdx === currentQ.correct) {
+                quizState.stageScores[quizState.currentStageIdx]++;
+            }
+            renderQuiz();
+        }
+
+        function nextQuizQuestion() {
+            const currentStage = QUIZ_STAGES[quizState.currentStageIdx];
+            quizState.answered = false;
+            quizState.selectedOption = null;
+
+            if (quizState.currentQuestionIdx < currentStage.questions.length - 1) {
+                quizState.currentQuestionIdx++;
+            } else if (quizState.currentStageIdx < QUIZ_STAGES.length - 1) {
+                quizState.currentStageIdx++;
+                quizState.currentQuestionIdx = 0;
+            } else {
+                quizState.finished = true;
+            }
+            renderQuiz();
+        }
+
+        function restartQuiz() {
+            quizState = {
+                currentStageIdx: 0,
+                currentQuestionIdx: 0,
+                selectedOption: null,
+                answered: false,
+                stageScores: [0, 0, 0],
+                finished: false
+            };
+            renderQuiz();
+        }
+
+        // =========================================================================
+        // 8. MENÚ MÓVIL E INICIALIZACIÓN AL CARGAR LA PÁGINA
+        // =========================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            renderEnergyExplorer();
+            renderSimulator();
+            renderQuiz();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
